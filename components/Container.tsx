@@ -12,6 +12,7 @@ const StyledSection = styled.section`
     transform: translate(-50%, -50%);
     height: 90%;
     width: 90%;
+    max-width: 800px;
 `;
 
 export const Container = ({ children }: TContainer) => {

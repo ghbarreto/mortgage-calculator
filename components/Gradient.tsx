@@ -6,7 +6,7 @@ type TGradient = {
 };
 
 const GradientContainer = styled.main`
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     background-image: linear-gradient(140deg, var(--light-blue) 0%, var(--purple) 50%);
 `;

@@ -1,22 +1,39 @@
 import type { NextPage } from 'next';
-import styled from 'styled-components';
 
-import { Gradient, Container, NavBar, ContainerBody, Text, Slider } from '../components';
+import { Gradient, Container, NavBar, ContainerBody, Text, Slider, RadioButtons } from '../components';
 import { useState } from 'react';
-
-const StyledContainer = styled.div`
-    padding: 50px 25px;
-`;
-
-const StyledText = styled(Text)`
-    margin-top: 7px;
-`;
+import { MonthlyPaymentCard } from '../components/MonthlyPaymentCard';
+import { useMutation } from 'react-query';
+import { postData } from '../apis/postData';
+import { StyledErrors, StyledContainer, StyledText, StyledSection, StyledLeftSide, StyledRightSide } from './styles';
 
 const Home: NextPage = () => {
-    const [sliderValue, setSliderValue] = useState(0);
+    const [data, setData] = useState({
+        principal: 0,
+        annualInterestRate: 0,
+        termOfLoan: 0,
+    });
 
-    const sliderChange = (_event: Event, value: number | Array<number>, _activeThumb: number) => {
-        setSliderValue(Number(value));
+    const [errors, setErrors] = useState(false);
+    const mutation = useMutation(postData);
+
+    const onChange = (
+        event: Event | React.ChangeEvent<HTMLInputElement>,
+        value: number | Array<number>,
+        _activeThumb: number
+    ) => {
+        const e = event.target as HTMLInputElement;
+        setData(data => ({ ...data, [e.name]: Number(value) }));
+    };
+
+    const submit = async () => {
+        if (data.principal === 0 || data.annualInterestRate === 0 || data.termOfLoan === 0) {
+            setErrors(true);
+            return;
+        }
+
+        setErrors(false);
+        return await mutation.mutate(data);
     };
 
     return (
@@ -30,21 +47,48 @@ const Home: NextPage = () => {
                         <StyledText type="legend" color="var(--light-gray)">
                             Qualify or apply your mortgage in minutes
                         </StyledText>
-                        <Slider
-                            labelTop="Purchase Price"
-                            value={sliderValue}
-                            min={20}
-                            max={200}
-                            onChange={sliderChange}
-                        />
+                        {errors && (
+                            <StyledErrors style={{ color: 'salmon' }}>
+                                Please fill up every option before checking your monthly payments.
+                            </StyledErrors>
+                        )}
 
-                        <Slider
-                            labelTop="Interest Rate"
-                            value={sliderValue}
-                            min={20}
-                            max={200}
-                            onChange={sliderChange}
-                        />
+                        {(mutation.isError || mutation.isPaused) && (
+                            <StyledErrors style={{ color: 'salmon' }}>
+                                There was an error processing your request. Please try again later.
+                            </StyledErrors>
+                        )}
+                        <StyledSection>
+                            <StyledLeftSide>
+                                <Slider
+                                    labelTop="Purchase Price"
+                                    value={data.principal}
+                                    min={50_000}
+                                    max={2_500_000}
+                                    onChange={onChange}
+                                    name="principal"
+                                />
+
+                                <Slider
+                                    labelTop="Interest Rate"
+                                    value={data.annualInterestRate}
+                                    min={0}
+                                    max={25}
+                                    onChange={onChange}
+                                    name="annualInterestRate"
+                                />
+
+                                <RadioButtons onChange={onChange} />
+                            </StyledLeftSide>
+
+                            <StyledRightSide>
+                                <MonthlyPaymentCard
+                                    value={mutation.data ? mutation.data.monthlyPayment : 0}
+                                    submit={submit}
+                                    isLoading={mutation.isLoading}
+                                />
+                            </StyledRightSide>
+                        </StyledSection>
                     </StyledContainer>
                 </ContainerBody>
             </Container>

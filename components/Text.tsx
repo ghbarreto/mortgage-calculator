@@ -10,7 +10,7 @@ type TStyles = {
 type TText = {
     children: React.ReactNode;
     elementType?: 'div' | 'span' | 'p' | 'li' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'label';
-    type?: 'bodyLarge' | 'header' | 'paragraph' | 'legend' | 'small-bold';
+    type?: 'h1' | 'bodyLarge' | 'header' | 'paragraph' | 'legend' | 'small-bold';
 } & TStyles;
 
 const StyledText = styled.p<TText>`
@@ -22,13 +22,15 @@ const StyledText = styled.p<TText>`
     ${({ type }) => {
         switch (type) {
             case 'bodyLarge':
-                return `font-size: 14px; font-weight: bold`;
+                return `font-size: 14px; font-weight: bold; `;
+            case 'h1':
+                return `font-size: 40px; font-weight: bold; `;
             case 'header':
                 return `font-size: 18px; font-weight: normal;`;
             case 'legend':
-                return `font-size: 12px; font-weight: normal;`;
+                return `font-size: 12px; font-weight: 400;`;
             case 'small-bold':
-                return `font-size: 11px; font-weight: bold; letter-spacing: 1.1px;`;
+                return `font-size: 11px; font-weight: 600; `;
             default:
                 return `font-size: 14px; font-weight: normal`;
         }
