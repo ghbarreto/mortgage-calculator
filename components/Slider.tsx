@@ -57,7 +57,7 @@ export const Slider = ({ labelTop, value, min, max, onChange, name }: TSlider) =
                     size="small"
                     defaultValue={70}
                     aria-label={labelTop}
-                    step={!isPrincipal ? 0.5 : undefined}
+                    step={!isPrincipal ? 0.5 : 10000}
                     min={min}
                     name={name}
                     max={max}
