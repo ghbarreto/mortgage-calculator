@@ -107,6 +107,10 @@ const StyledMUISlider = styled(MUISlider)`
         &-markLabel[data-index='1'] {
             right: -15%;
         }
+
+        &-mark {
+            background-color: var(--light-gray);
+        }
     }
 `;
 
