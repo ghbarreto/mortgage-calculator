@@ -11,5 +11,5 @@ type TContainerBody = {
 };
 
 export const ContainerBody = ({ children }: TContainerBody) => {
-    return <StyledContainerBody>{children}</StyledContainerBody>;
+    return <StyledContainerBody data-testid="container-body">{children}</StyledContainerBody>;
 };

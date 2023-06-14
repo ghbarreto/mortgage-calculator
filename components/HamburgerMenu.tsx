@@ -9,7 +9,7 @@ export const HamburgerMenu = () => {
     };
 
     return (
-        <HamburgerContainer onClick={toggleMenu}>
+        <HamburgerContainer onClick={toggleMenu} data-testid="hamburger-menu">
             <HamburgerBar />
             <HamburgerBar />
             <HamburgerBar />
