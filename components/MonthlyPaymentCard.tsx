@@ -39,6 +39,7 @@ const StyledValue = styled(Text)`
 const StyledSpinnerContainer = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
 `;
 
 const Button = styled.button`
@@ -73,6 +74,7 @@ const StyledSpan = styled.span`
     position: relative;
     top: -10px;
     margin-right: -5px;
+    margin-left: 3px;
     @media (min-width: 900px) {
         font-size: 40px;
         top: -20px;
@@ -89,6 +91,9 @@ export const MonthlyPaymentCard = ({
     submit: () => void;
     isLoading: boolean;
 }) => {
+    const amount = String(value).split('.')[0];
+    const cents = String(value).split('.')[1];
+
     return (
         <StyledCard>
             {isLoading ? (
@@ -103,7 +108,8 @@ export const MonthlyPaymentCard = ({
 
                     <StyledText type="h1">
                         <StyledSpan>$</StyledSpan>
-                        <StyledValue as="span"> {value ? value.toLocaleString() : '0'}</StyledValue>
+                        <StyledValue as="span"> {amount ? amount.toLocaleString() : '0'}</StyledValue>
+                        <StyledSpan>{cents}</StyledSpan>
                     </StyledText>
 
                     <StyledText type="bodyLarge" color="var(--gray)">
