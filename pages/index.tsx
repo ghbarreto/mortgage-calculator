@@ -5,7 +5,14 @@ import { useState } from 'react';
 import { MonthlyPaymentCard } from '../components/MonthlyPaymentCard';
 import { useMutation } from 'react-query';
 import { postData } from '../apis/postData';
-import { StyledErrors, StyledContainer, StyledText, StyledSection, StyledLeftSide, StyledRightSide } from './styles';
+import {
+    StyledErrors,
+    StyledContainer,
+    StyledText,
+    StyledSection,
+    StyledLeftSide,
+    StyledRightSide,
+} from '../styles/styles';
 
 const Home: NextPage = () => {
     const [data, setData] = useState({

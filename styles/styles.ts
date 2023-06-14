@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Text } from '../components/';
+import { Text } from '../components';
 
 export const StyledContainer = styled.div`
     padding: 50px 25px;
