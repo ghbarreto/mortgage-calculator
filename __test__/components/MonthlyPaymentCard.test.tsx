@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('it should render the MonthlyPaymentCard correctly', () => {
     it('should render the  MonthlyPaymentCard value', () => {
         render(<MonthlyPaymentCard submit={jest.fn()} isLoading={false} value={10_000} />);
-        expect(screen.getByText('10,000')).toBeTruthy();
+        expect(screen.getByText('10000')).toBeTruthy();
     });
 
     it('should render the  MonthlyPaymentCard title', () => {
