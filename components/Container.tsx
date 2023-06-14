@@ -12,7 +12,10 @@ const StyledSection = styled.section`
     transform: translate(-50%, -50%);
     height: 90%;
     width: 90%;
-    max-width: 800px;
+
+    @media (min-width: 900px) {
+        max-width: 1000px;
+    }
 `;
 
 export const Container = ({ children }: TContainer) => {

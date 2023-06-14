@@ -12,11 +12,28 @@ const StyledCard = styled.div`
     position: relative;
 
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+    @media (min-width: 900px) {
+        height: 300px;
+        width: 400px;
+        margin-right: 40px;
+    }
 `;
 
 const StyledText = styled(Text)`
     margin-top: 20px;
     margin-bottom: 40px;
+
+    @media (min-width: 900px) {
+        margin-top: 40px;
+    }
+`;
+
+const StyledValue = styled(Text)`
+    font-size: 30px;
+    @media (min-width: 900px) {
+        font-size: 60px !important;
+    }
 `;
 
 const StyledSpinnerContainer = styled.div`
@@ -54,8 +71,13 @@ const Button = styled.button`
 const StyledSpan = styled.span`
     font-size: 25px;
     position: relative;
-    top: -15px;
-    margin-right: 5px;
+    top: -10px;
+    margin-right: -5px;
+    @media (min-width: 900px) {
+        font-size: 40px;
+        top: -20px;
+        margin-right: -10px;
+    }
 `;
 
 export const MonthlyPaymentCard = ({
@@ -81,7 +103,7 @@ export const MonthlyPaymentCard = ({
 
                     <StyledText type="h1">
                         <StyledSpan>$</StyledSpan>
-                        {value ? value.toLocaleString() : '0'}
+                        <StyledValue as="span"> {value ? value.toLocaleString() : '0'}</StyledValue>
                     </StyledText>
 
                     <StyledText type="bodyLarge" color="var(--gray)">

@@ -3,6 +3,10 @@ import { Text } from '../components';
 
 export const StyledContainer = styled.div`
     padding: 50px 25px;
+
+    @media (min-width: 768px) {
+        margin-left: 15px;
+    }
 `;
 
 export const StyledText = styled(Text)`

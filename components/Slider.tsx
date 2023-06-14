@@ -94,6 +94,10 @@ const StyledMUISlider = styled(MUISlider)`
         font-size: 12px;
         margin-top: -4px;
     }
+
+    & .MuiSlider-rail {
+        background-color: var(--gray);
+    }
 `;
 
 const StyledLabel = styled.label``;

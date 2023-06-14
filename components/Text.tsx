@@ -22,7 +22,10 @@ const StyledText = styled.p<TText>`
     ${({ type }) => {
         switch (type) {
             case 'bodyLarge':
-                return `font-size: 14px; font-weight: bold; `;
+                return `font-size: 14px; font-weight: bold; 
+				@media (min-width: 900px) { font-size: 20px; }
+				
+				`;
             case 'h1':
                 return `font-size: 40px; font-weight: bold; `;
             case 'header':
