@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
 `;
 const StyledUL = styled.ul`
     display: flex;
-    padding: 0;
+    padding: 0 20px;
     justify-content: space-between;
     align-items: center;
     margin: 0;
