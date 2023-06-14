@@ -23,7 +23,7 @@ const StyledText = styled.p<TText>`
         switch (type) {
             case 'bodyLarge':
                 return `font-size: 14px; font-weight: bold; 
-				@media (min-width: 900px) { font-size: 20px; }
+				@media (min-width: 900px) { font-size: 18px; }
 				
 				`;
             case 'h1':
