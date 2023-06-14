@@ -82,21 +82,31 @@ const StyledContainer = styled.div`
 
 const StyledMUISlider = styled(MUISlider)`
     margin-top: -5px;
-    & > .MuiSlider-thumb {
-        color: white;
-        border: 1px solid var(--indigo);
-    }
+    & > .MuiSlider {
+        &-thumb {
+            color: white;
+            border: 1px solid var(--indigo);
+        }
 
-    & > .MuiSlider-markLabel {
-        color: var(--light-gray);
-        font-family: var(--font-family);
-        font-weight: 600;
-        font-size: 12px;
-        margin-top: -4px;
-    }
+        &-markLabel {
+            color: var(--light-gray);
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 12px;
+            margin-top: -4px;
+        }
 
-    & .MuiSlider-rail {
-        background-color: var(--gray);
+        &-rail {
+            background-color: var(--gray);
+        }
+
+        &-markLabel[data-index='0'] {
+            left: 3% !important;
+        }
+
+        &-markLabel[data-index='1'] {
+            right: -15%;
+        }
     }
 `;
 
